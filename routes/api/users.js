@@ -33,9 +33,10 @@ router.post(
         const { name, email, password, user_type } = req.body;
 
         try {
-        // See if user exists
+
         let user = await User.findOne({ email });
 
+        // See if user exists
         if(user) {
             return res
                 .status(400)
@@ -86,7 +87,7 @@ router.post(
 
         } catch(err) {
             console.error(err.message);
-            res.status(500).send('Server error');
+            res.status(500).send('Server Error');
         }
     }
 );
