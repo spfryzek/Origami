@@ -16,7 +16,8 @@ const UserSchema = new mongoose.Schema({
     },
     user_type: {
         type: String,
-        required: true
+        required: true,
+        default: "Student"
     },
     avatar: {
         type: String
