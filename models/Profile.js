@@ -10,14 +10,31 @@ const ProfileSchema = new mongoose.Schema({
     },
     available: {
         type: Boolean,
-        default: true,
-        required: true
+        default: true
     },
     inappropriate_activity: {
         type: Number,
-        default: 0,
-        required: true
-    }
+        default: 0
+    },
+    course_history: [
+        {   
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'user'
+            },
+            course_id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'course'
+            },
+            date_enrolled: {
+                type: Date,
+                required: true
+            },
+            date_completed: {
+                type: Date
+            }   
+        }
+    ]
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);
